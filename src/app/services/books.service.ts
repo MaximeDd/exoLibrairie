@@ -9,7 +9,6 @@ import DataSnapshot = firebase.database.DataSnapshot;
 })
 export class BooksService {
 
-  path = '/books';
   books: Book[] = [];
   booksSuject = new Subject<Book[]>();
 
@@ -19,7 +18,7 @@ export class BooksService {
 
   getBooks() {
     firebase.database()
-      .ref(this.path)
+      .ref('/books')
       .on('value', (data: DataSnapshot) => {
         const dataValue = data.val();
         this.books = dataValue ? dataValue : [];
@@ -31,7 +30,7 @@ export class BooksService {
     return new Promise(
       (resolve, reject) => {
         firebase.database()
-          .ref(this.path + id)
+          .ref('/books/' + id)
           .once('value')
           .then((data: DataSnapshot) => {
             resolve(data.val());
@@ -44,7 +43,7 @@ export class BooksService {
 
   saveBooks() {
     firebase.database()
-      .ref(this.path)
+      .ref('/books')
       .set(this.books);
     this.emitBook();
   }
