@@ -1,3 +1,8 @@
-<p>
-  single-book works!
-</p>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h1>{{ book.title}}</h1>
+    <h3>{{ book.author }}</h3>
+    <p> {{ book.sysnopsis }}</p>
+    <button class="btn btn-default" (click)="onBack()">Retour</button>
+  </div>
+</div>
