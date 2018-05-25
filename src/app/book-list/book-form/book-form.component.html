@@ -18,6 +18,13 @@
                   class="form-control" formControlName="synopsis">
         </textarea>
       </div>
+      <div class="form-group">
+        <label for="image">Couverture</label>
+        <input type="file" id="image"
+                  class="form-control" accept="image/*"
+                  (change)="detectImage($event)">
+        <p class="text-success" *ngIf="imageUploaded">Fichier chargé.</p>
+      </div>
       <button class="btn btn-success" [disabled]="bookForm.invalid"
               type="submit">Enregistrer
       </button>
